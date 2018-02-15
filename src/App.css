@@ -35,3 +35,8 @@
 input[type="radio"] {
   margin-right: 15px;
 }
+
+.guess-word {
+  text-align: center;
+  font-size: 32px;
+}

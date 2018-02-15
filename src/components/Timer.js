@@ -16,7 +16,7 @@ class Timer extends Component {
 
     cardsTimer () {
         var begin = new Date().getTime();
-        var timesUp = begin + 60000;
+        var timesUp = begin + 5000;
     
         var x = setInterval( () => {
           var now = new Date().getTime();
@@ -39,7 +39,7 @@ class Timer extends Component {
         return (
             <div className="card" id="timer-card">
                 <h4 className="card-title">Timer</h4>
-                <p className="card-text">{this.state.timeRemaining}</p>
+                <p>{this.state.timeRemaining}</p>
                 <button type="button" className="btn btn-primary" onClick={this.cardsTimer}>Start</button>
             </div>
         )

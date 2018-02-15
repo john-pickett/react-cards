@@ -14,10 +14,10 @@ class Evaluate extends Component {
         let showEval = null;
 
         if (isCorrect === true) {
-            console.log('eval true')
+            // console.log('eval true')
             showEval = <Correct />;
         } else if (isCorrect === false) {
-            console.log('eval false')
+            // console.log('eval false')
             showEval = <Incorrect />;
         } else {
             showEval = null;

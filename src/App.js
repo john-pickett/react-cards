@@ -1,34 +1,37 @@
 import React, { Component } from 'react';
 import './App.css';
 import Timer from './components/Timer'
-import Answers from './components/Answers'
-import Spanish from './components/Spanish'
 import Evaluate from './components/Evaluate'
+import FlashCards from './components/FlashCards'
 
 class App extends Component {
   constructor(props) {
     super(props);
     
     this.state = {
-      isCorrect: null
+      isCorrect: null,
+      timesUp: false
     }
     this.handleAnswerSelect = this.handleAnswerSelect.bind(this);
   }
 
   handleAnswerSelect (value) {
-    console.log('App ' + value)
-
-    if (value === 'option1') {
-      console.log('true')
+    // console.log('App ' + value)
+    if (value === 'correct') {
+      // console.log('true')
       this.setState({
         isCorrect: true
       })
-    } else {
-      console.log('false')
+    } else if (value === 'incorrect') {
+      // console.log('false')
       this.setState({
         isCorrect: false
       })
-    } 
+    } else {
+      this.setState({
+        isCorrect: null
+      })
+    }
   }
 
   
@@ -39,14 +42,7 @@ class App extends Component {
           <header className="App-header">
             <h1 className="App-title">Flash Cards</h1>
           </header>
-          <div className="row">
-            <div className="col-md-6">
-              <Spanish />
-            </div>
-            <div className="col-md-6">
-              <Answers onAnswerSelect={this.handleAnswerSelect} />
-            </div>
-          </div>
+          <FlashCards onAnswerSelect={this.handleAnswerSelect} />
           <div className="row">
             <div className="col-md-4">
               <Timer />
