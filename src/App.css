@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  height: 150px;
+  height: 100px;
   padding: 20px;
 }
 
@@ -39,4 +39,21 @@ input[type="radio"] {
 .guess-word {
   text-align: center;
   font-size: 32px;
+}
+
+.flash-card {
+  min-height: 300px;
+}
+
+.score-card {
+  text-align: center;
+  font-size: 28px;
+}
+
+.correct {
+  background-color: green;
+}
+
+.incorrect {
+  background-color: red;
 }

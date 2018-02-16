@@ -5,7 +5,9 @@ class Correct extends Component {
 
     render () {
         return (
-            <h2 className="text-center">Correct</h2>
+            <div className="correct">
+                <h2 className="text-center">Correct</h2>
+            </div>
         )
     }
 }

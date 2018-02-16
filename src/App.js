@@ -10,23 +10,27 @@ class App extends Component {
     
     this.state = {
       isCorrect: null,
-      timesUp: false
+      timesUp: false,
+      score: 0,
+      disabled: false
     }
-    this.handleAnswerSelect = this.handleAnswerSelect.bind(this);
+
   }
 
-  handleAnswerSelect (value) {
+  handleAnswerSelect = (value) => {
     // console.log('App ' + value)
     if (value === 'correct') {
       // console.log('true')
       this.setState({
         isCorrect: true
       })
+      this.state.score += 10;
     } else if (value === 'incorrect') {
       // console.log('false')
       this.setState({
         isCorrect: false
       })
+      this.state.score -= 5;
     } else {
       this.setState({
         isCorrect: null
@@ -34,6 +38,20 @@ class App extends Component {
     }
   }
 
+  handleTimer = (value) => {
+    if (value === 'start') {
+      // console.log('value is start')
+      this.setState({
+        disabled: false,
+        score: 0
+      })
+    } else if (value === 'end') {
+      // console.log('value is end')
+      this.setState({
+        disabled: true
+      })
+    }
+  }
   
   render() {
     return (
@@ -42,13 +60,13 @@ class App extends Component {
           <header className="App-header">
             <h1 className="App-title">Flash Cards</h1>
           </header>
-          <FlashCards onAnswerSelect={this.handleAnswerSelect} />
+          <FlashCards onAnswerSelect={this.handleAnswerSelect} disabled={this.state.disabled}/>
           <div className="row">
             <div className="col-md-4">
-              <Timer />
+              <Timer timerBus={this.handleTimer}/>
             </div>
             <div className="col-md-8">
-              <Evaluate isCorrect={this.state.isCorrect}/>
+              <Evaluate isCorrect={this.state.isCorrect} score={this.state.score}/>
             </div>
           </div>
         </div>

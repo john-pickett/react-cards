@@ -5,7 +5,9 @@ class Incorrect extends Component {
 
     render () {
         return (
-            <h2 className="text-center">Incorrect</h2>
+            <div className="incorrect">
+                <h2 className="text-center">Nope</h2>
+            </div>
         )
     }
 }

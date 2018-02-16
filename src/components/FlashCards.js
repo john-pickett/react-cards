@@ -79,6 +79,8 @@ class FlashCards extends Component {
     }
 
     getRandomAnswers = () => {
+        // need to make sure correct answer is not added to randomAnswers!!
+        
         console.log('getRandomAnswers running')
         if (this.state.randomAnswers.length > 0) {
             this.setState({
@@ -101,41 +103,49 @@ class FlashCards extends Component {
         return Math.floor(Math.random() * range);
     }
 
+    isDisabled = () => {
+        if (this.props.disabled) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     render () {
         
         return (
             <div className="row">
                 <div className="col-md-6">
-                    <div className="card">
+                    <div className="card flash-card">
                         <h4 className="card-title">Spanish</h4>
                         <p className="guess-word">{this.state.guesses[this.state.counter]}</p>
                     </div>
                 </div>
                 <div className="col-md-6">
-                    <div className="card">
+                    <div className="card flash-card">
                         <h4 className="card-title">English</h4>
                         <div className="form-group">
-                            <input name="group2" type="radio" className="with-gap" id="radio1"  value={this.state.randomAnswers[0]}
+                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio1"  value={this.state.randomAnswers[0]}
                             checked={this.state.selectedOption === 'radio1'} onClick={this.handleOptionChange}/>
                             <label>{this.state.randomAnswers[0]}</label>
                         </div>
                         <div className="form-group">
-                            <input name="group2" type="radio" className="with-gap" id="radio2" value={this.state.randomAnswers[1]}
+                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio2" value={this.state.randomAnswers[1]}
                             checked={this.state.selectedOption === 'radio2'} onClick={this.handleOptionChange}/>
                             <label>{this.state.randomAnswers[1]}</label>
                         </div>
                         <div className="form-group">
-                            <input name="group2" type="radio" className="with-gap" id="radio3" value={this.state.randomAnswers[2]}
+                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio3" value={this.state.randomAnswers[2]}
                             checked={this.state.selectedOption === 'radio3'} onClick={this.handleOptionChange}/>
                             <label>{this.state.randomAnswers[2]}</label>
                         </div>
                         <div className="form-group">
-                            <input name="group2" type="radio" className="with-gap" id="radio4"  value={this.state.randomAnswers[3]}
+                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio4"  value={this.state.randomAnswers[3]}
                             checked={this.state.selectedOption === 'radio4'} onClick={this.handleOptionChange}/>
                             <label>{this.state.randomAnswers[3]}</label>
                         </div>
                         <div className="form-group">
-                            <input name="group2" type="radio" className="with-gap" id="radio5"  value={this.state.randomAnswers[4]}
+                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio5"  value={this.state.randomAnswers[4]}
                             checked={this.state.selectedOption === 'radio5'} onClick={this.handleOptionChange}/>
                             <label>{this.state.randomAnswers[4]}</label>
                         </div>

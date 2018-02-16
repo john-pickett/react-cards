@@ -7,25 +7,44 @@ class Evaluate extends Component {
     constructor (props) {
         super (props);
         
+        this.setState = {
+            correct: null,
+            incorrect: null
+        }
+
     }
+
+    // this.props.isCorrect? "correct" : "incorrect"
 
     render () {
         let isCorrect = this.props.isCorrect
         let showEval = null;
+        let score = this.props.score;
 
         if (isCorrect === true) {
             // console.log('eval true')
             showEval = <Correct />;
+
         } else if (isCorrect === false) {
             // console.log('eval false')
             showEval = <Incorrect />;
+
         } else {
             showEval = null;
+
         }
+
         return (
             <div className="card">
-                <h4 className="card-title">Evaluate</h4>
-                {showEval}
+                <div className="row">
+                    <div className="col-md-8">
+                        {showEval}
+                    </div>
+                    <div className="col-md-4 score-card">
+                        <h4 className="card-title">Score</h4>
+                        {score}
+                    </div>
+                </div>
             </div>
         )
     }
