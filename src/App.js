@@ -74,7 +74,8 @@ class App extends Component {
   }
 
   getScores = () => {
-    axios.get('http://localhost:3000/scores')
+    // axios.get('http://localhost:3000/scores')
+    axios.get('https://flash-cards-api.herokuapp.com/scores')
     .then((doc) => {
       console.log('got score data');
       console.log(doc.data);
@@ -96,9 +97,11 @@ class App extends Component {
       "score": this.state.score
     };
     console.log('saving ' + JSON.stringify(myScore));
-    axios.post('http://localhost:3000/scores', myScore)
+    // axios.post('http://localhost:3000/scores', myScore)
+    axios.post('https://flash-cards-api.herokuapp.com/scores', myScore)
     .then((doc) => {
       console.log('score saved');
+      $('#scoreModal').modal('hide');
     }, (err) => {
       console.log(err)
     });

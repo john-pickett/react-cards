@@ -18,7 +18,23 @@ class FlashCards extends Component {
                 "poder",
                 "decir",
                 "ir",
-                "ver"
+                "ver",
+                "dar",
+                "saber",
+                "querer",
+                "llegar",
+                "pasar",
+                "deber",
+                "poner",
+                "parecer",
+                "quedar",
+                "creer",
+                "hablar",
+                "llevar",
+                "dejar",
+                "seguir",
+                "encontrar",
+                "llamar"
             ],
             answers: [
                 "to dance",
@@ -30,7 +46,23 @@ class FlashCards extends Component {
                 "to be able",
                 "to say",
                 "to go",
-                "to see"
+                "to see",
+                "to give",
+                "to know",
+                "to want",
+                "to arrive",
+                "to happen",
+                "to ought to",
+                "to put",
+                "to seem",
+                "to stay",
+                "to believe",
+                "to speak",
+                "to carry",
+                "to leave",
+                "to follow",
+                "to find",
+                "to call"
             ],
             randomAnswers: [],
             selectedOption: null
@@ -43,6 +75,12 @@ class FlashCards extends Component {
         this.setState({
             counter: this.state.counter + 1
         })
+        
+        if (this.state.counter >= this.state.guesses.length) {
+            this.setState({
+                counter: 0
+            })
+        }
     }
 
     handleOptionChange = (event) => {
@@ -92,7 +130,8 @@ class FlashCards extends Component {
         let currentAnswer = this.state.answers[this.state.counter];
         while (this.state.randomAnswers.length <= 3) {
             let possibleAnswer = this.state.answers[this.random(10)];
-            if (this.state.randomAnswers.indexOf(possibleAnswer) === -1) {
+            // checks to see if pA is already in rA, then checks to make sure pA is not cA
+            if (this.state.randomAnswers.indexOf(possibleAnswer) === -1 && possibleAnswer !== currentAnswer) {
                 this.state.randomAnswers.push(possibleAnswer)
             }
         }
