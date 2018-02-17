@@ -81,7 +81,11 @@ class App extends Component {
       console.log(doc.data);
       let tempScores = [];
       doc.data.scores.forEach((score) => {
+        score.score = parseInt(score.score)
         tempScores.push(score);
+      })
+      tempScores.sort((a, b) => {
+        return b.score - a.score
       })
       this.setState({
         scores: tempScores
