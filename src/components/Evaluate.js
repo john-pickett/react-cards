@@ -35,7 +35,7 @@ class Evaluate extends Component {
         }
 
         return (
-            <div className="card">
+            <div className="card" id="eval-card">
                 <div className="row">
                     <div className="col-md-8">
                         {showEval}

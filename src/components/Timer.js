@@ -5,7 +5,7 @@ class Timer extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            timeRemaining: "5"
+            timeRemaining: "60"
         }
         this.cardsTimer = this.cardsTimer.bind(this);
         // this.delta = this.delta.bind(this);
@@ -17,7 +17,7 @@ class Timer extends Component {
     cardsTimer () {
         this.props.timerBus('start');
         var begin = new Date().getTime();
-        var timesUp = begin + 15000;
+        var timesUp = begin + 60000;
     
         var x = setInterval( () => {
           var now = new Date().getTime();

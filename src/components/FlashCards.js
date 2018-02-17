@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import TimeUp from './TimeUp';
 
 class FlashCards extends Component {
     constructor (props) {
@@ -38,7 +39,7 @@ class FlashCards extends Component {
     }
 
     nextGuess = () => {
-        console.log('nextGuess running')
+        // console.log('nextGuess running')
         this.setState({
             counter: this.state.counter + 1
         })
@@ -81,7 +82,7 @@ class FlashCards extends Component {
     getRandomAnswers = () => {
         // need to make sure correct answer is not added to randomAnswers!!
         
-        console.log('getRandomAnswers running')
+        // console.log('getRandomAnswers running')
         if (this.state.randomAnswers.length > 0) {
             this.setState({
                 randomAnswers: []
@@ -96,7 +97,7 @@ class FlashCards extends Component {
             }
         }
         this.state.randomAnswers.splice(this.random(4), 0, currentAnswer);
-        console.log('ra[0]: ' + this.state.randomAnswers[0]);
+        // console.log('ra[0]: ' + this.state.randomAnswers[0]);
     }
 
     random = (range) => {
@@ -112,7 +113,12 @@ class FlashCards extends Component {
     }
 
     render () {
-        
+        let isTimeUp = this.props.timeUp
+
+        if (isTimeUp === true) {
+            isTimeUp = <TimeUp />
+        } 
+
         return (
             <div className="row">
                 <div className="col-md-6">
@@ -124,6 +130,13 @@ class FlashCards extends Component {
                 <div className="col-md-6">
                     <div className="card flash-card">
                         <h4 className="card-title">English</h4>
+                        <div className="row">
+                            <div className="col-md-6 offset-md-6">
+                                <div id="time-up">
+                                    {isTimeUp}
+                                </div>
+                            </div>
+                        </div>
                         <div className="form-group">
                             <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio1"  value={this.state.randomAnswers[0]}
                             checked={this.state.selectedOption === 'radio1'} onClick={this.handleOptionChange}/>
@@ -149,6 +162,7 @@ class FlashCards extends Component {
                             checked={this.state.selectedOption === 'radio5'} onClick={this.handleOptionChange}/>
                             <label>{this.state.randomAnswers[4]}</label>
                         </div>
+                        
                     </div>
                 </div>
             </div>
