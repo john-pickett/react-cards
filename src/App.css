@@ -15,6 +15,10 @@
   font-size: large;
 }
 
+.body {
+  padding-top: 20px;
+}
+
 .row {
   margin-bottom: 10px;
 }
@@ -79,4 +83,8 @@ input[type="radio"] {
 
 #time-up {
   position: absolute;
+}
+
+.green {
+  background-color: green;
 }

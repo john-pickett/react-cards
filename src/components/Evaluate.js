@@ -34,6 +34,13 @@ class Evaluate extends Component {
 
         }
 
+        // may use this to hide score until user starts
+        // if (score !== 0) {
+        //     this.setState({
+        //         active: true
+        //     })
+        // }
+
         return (
             <div className="card" id="eval-card">
                 <div className="row">
