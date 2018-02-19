@@ -99,3 +99,7 @@ input[type="radio"] {
 #time-up {
   position: absolute;
 }
+
+.create-lesson-card {
+  padding: 0 30px;
+}
