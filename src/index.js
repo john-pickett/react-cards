@@ -11,8 +11,6 @@ import UserProfile from './components/UserProfile';
 import { Router, Route, Switch } from 'react-router';
 import { BrowserRouter, Link } from 'react-router-dom'
 
-import './include/bootstrap';
-
 
 
 ReactDOM.render((

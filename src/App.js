@@ -1,10 +1,12 @@
-import $ from 'jquery';
+
 import axios from 'axios';
 import classnames from 'classnames';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/mdbreact/docs/css/mdb.min.css';
 
 import React, { Component } from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
+import NavbarFC from './components/Navbar';
 import Timer from './components/Timer';
 import Evaluate from './components/Evaluate';
 import FlashCards from './components/FlashCards';
@@ -72,7 +74,7 @@ class App extends Component {
   }
 
   openModal = () => {
-    $('#scoreModal').modal()
+    // $('#scoreModal').modal()
   }
 
   getScores = () => {
@@ -107,7 +109,7 @@ class App extends Component {
     // axios.post('https://flash-cards-api.herokuapp.com/scores', myScore)
     .then((doc) => {
       console.log('score saved');
-      $('#scoreModal').modal('hide');
+      // $('#scoreModal').modal('hide');
     }, (err) => {
       console.log(err)
     });
@@ -126,53 +128,16 @@ class App extends Component {
     });
 
     return (
-      <div className="container-fluid">
-        <div className="App">
-          <Navbar />
-          <div className="body">
-            <FlashCards onAnswerSelect={this.handleAnswerSelect} disabled={this.state.disabled} timeUp={this.state.timeUp}/>
-            <div className="row">
-              <div className="col-md-4">
-                <Timer timerBus={this.handleTimer}/>
-              </div>
-              <div className="col-md-8">
-                <Evaluate isCorrect={this.state.isCorrect} score={this.state.score}/>
-              </div>
+      <div className="App">
+        <NavbarFC />
+        <div className="body">
+          <FlashCards onAnswerSelect={this.handleAnswerSelect} disabled={this.state.disabled} timeUp={this.state.timeUp}/>
+          <div className="row">
+            <div className="col-md-4">
+              <Timer timerBus={this.handleTimer}/>
             </div>
-            <div className="modal fade" id="scoreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Score</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <h4 className="text-center">You scored {this.state.score} points on Spanish!</h4>
-                            <div>&nbsp;</div>
-                            <h6 className="text-center">All-Time High Scores</h6>
-                            <ol>
-                              {highScores}
-                            </ol>
-                            <h6 className="text-center">Save Your Score</h6>
-                            <div className="row">
-                              <div className="col-md-6 offset-md-2">
-                              <p>Type Your Name</p>
-                                <input id="user-name-input" type="text" onChange={this.handleUserName}/>
-                              </div>
-                              <div className="col-md-3">
-                              <p>Score</p>
-                                {this.state.score}
-                              </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onClick={this.saveScore}>Save changes</button>
-                        </div>
-                    </div>
-                </div>
+            <div className="col-md-8">
+              <Evaluate isCorrect={this.state.isCorrect} score={this.state.score}/>
             </div>
           </div>
         </div>

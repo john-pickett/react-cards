@@ -1,47 +1,70 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Link } from 'react-router-dom'
+import { Navbar, NavbarBrand, NavbarToggler, NavbarNav, Collapse, NavItem, NavLink, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'mdbreact';
 
-class Navbar extends Component {
 
-    render () {
+class NavbarFC extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            collapse: false,
+            isWideEnough: false,
+            dropdownOpen: false
+        };
+    this.onClick = this.onClick.bind(this);
+    this.toggle = this.toggle.bind(this);
+    }
+    
+    onClick(){
+        this.setState({
+            collapse: !this.state.collapse,
+        });
+    }
+    
+    toggle() {
+        this.setState({
+            dropdownOpen: !this.state.dropdownOpen
+        });
+    }
+    
+    render() {
         return (
-                <div>
-                    <nav className="navbar navbar-expand-lg navbar-dark indigo">
-                        {/* <a className="navbar-brand" href="#">Flash Cards</a> */}
-                        <Link to='/'>Home</Link>
-                        <Link to='/create-lesson'>Create Lesson</Link>
-                        <Link to='/profile'>Your Profile</Link>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
-                        {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav mr-auto">
-                                 <li className="nav-item active">
-                                    <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                                </li> 
-                                <li className="nav-item">
-                                    <Link to='/create-lesson'>Create Lesson</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to='/profile'>Your Profile</Link>
-                                </li>
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                    <div className="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                        <a className="dropdown-item" href="#">Action</a>
-                                        <a className="dropdown-item" href="#">Another action</a>
-                                        <a className="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </li>
-                            </ul>
-                            <form className="form-inline">
-                                <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                            </form>
-                        </div> */}
-                    </nav>
-            </div>
-        )
+            <Navbar color="indigo" dark expand="md" scrolling>
+                <NavbarBrand href="/">
+                    <strong>Flash Cards</strong>
+                </NavbarBrand>
+                { !this.state.isWideEnough && <NavbarToggler onClick = { this.onClick } />}
+                <Collapse isOpen = { this.state.collapse } navbar>
+                    <NavbarNav className="ml-auto">
+                    <NavItem active>
+                        <NavLink className="nav-link" href="/create-lesson" to="/create-lesson">Create Lesson</NavLink>
+                        {/* <Link to="/create-lesson" /> */}
+                        
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className="nav-link" to="/profile">User Profile</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                        <DropdownToggle nav caret>Dropdown</DropdownToggle>
+                        <DropdownMenu>
+                            <DropdownItem href="#">Action</DropdownItem>
+                            <DropdownItem href="#">Another Action</DropdownItem>
+                            <DropdownItem href="#">Something else here</DropdownItem>
+                            <DropdownItem href="#">Something else here</DropdownItem>
+                        </DropdownMenu>
+                        </Dropdown>
+                    </NavItem>
+                        <form className="form-inline">
+                        <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
+                        </form>
+                    </NavbarNav>
+                </Collapse>
+            </Navbar>
+        );
     }
 }
 
-export default Navbar;
+
+export default NavbarFC;

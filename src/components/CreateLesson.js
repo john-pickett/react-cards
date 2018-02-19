@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Navbar from './Navbar';
+import NavbarFC from './Navbar';
 
 import axios from 'axios';
 
@@ -20,7 +20,7 @@ class CreateLesson extends Component {
     render () {
         return (
             <div>
-                <Navbar />
+                <NavbarFC />
                 <h2>Create New Lesson</h2>
                 <div className="row">
                     <div className="col-md-6">
