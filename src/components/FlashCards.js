@@ -8,6 +8,7 @@ class FlashCards extends Component {
 
         this.state = {
             counter: 0,
+            length: 26,
             guesses: [
                 "bailar",
                 "comer",
@@ -68,6 +69,7 @@ class FlashCards extends Component {
             selectedOption: null
         }
         this.getRandomAnswers();
+
     }
 
     nextGuess = () => {
@@ -152,10 +154,12 @@ class FlashCards extends Component {
     }
 
     render () {
-        let isTimeUp = this.props.timeUp
+        
+        let isTimeUp = this.props.timeUp;
+        let showTimeUp = null;
 
         if (isTimeUp === true) {
-            isTimeUp = <TimeUp />
+            showTimeUp = <TimeUp />
         } 
 
         return (
@@ -172,7 +176,7 @@ class FlashCards extends Component {
                         <div className="row">
                             <div className="col-md-6 offset-md-6">
                                 <div id="time-up">
-                                    {isTimeUp}
+                                    {showTimeUp}
                                 </div>
                             </div>
                         </div>

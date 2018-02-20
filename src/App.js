@@ -10,6 +10,7 @@ import NavbarFC from './components/Navbar';
 import Timer from './components/Timer';
 import Evaluate from './components/Evaluate';
 import FlashCards from './components/FlashCards';
+import ModalFC from './components/Modal';
 
 
 
@@ -21,17 +22,18 @@ class App extends Component {
       isCorrect: null,
       timesUp: false,
       score: 0,
-      name: '',
+      userName: '',
       disabled: true,
       timeUp: false,
-      scores: []
+      highScores: [],
+      modal: false
     }
 
     this.getScores();
   }
 
   componentWillMount () {
-    console.log('will mount')
+    // console.log('will mount')
   }
 
   handleAnswerSelect = (value) => {
@@ -67,7 +69,8 @@ class App extends Component {
       // console.log('value is end')
       this.setState({
         disabled: true,
-        timeUp: true
+        timeUp: true,
+        modal: true
       })
       this.openModal();
     }
@@ -92,7 +95,7 @@ class App extends Component {
         return b.score - a.score
       })
       this.setState({
-        scores: tempScores
+        highScores: tempScores
       });
     }, (err) => {
       console.log(err);
@@ -117,13 +120,13 @@ class App extends Component {
 
   handleUserName = (event) => {
     this.setState({
-      name: event.target.value
-    })
-    console.log('user name: ' + this.state.name)
+      userName: event.target.value
+    });
+    console.log('user name: ' + this.state.userName);
   }
   
   render() {
-    const highScores = this.state.scores.map((score) => {
+    const highScores = this.state.highScores.map((score) => {
       return <li>{score.name} - {score.score}</li>
     });
 
@@ -141,6 +144,7 @@ class App extends Component {
             </div>
           </div>
         </div>
+        <ModalFC active={this.state.modal}/>
       </div>
     );
   }
