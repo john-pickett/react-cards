@@ -9,62 +9,11 @@ class FlashCards extends Component {
         this.state = {
             counter: 0,
             length: 26,
-            guesses: [
-                "bailar",
-                "comer",
-                "empezar",
-                "correr",
-                "tener",
-                "hacer",
-                "poder",
-                "decir",
-                "ir",
-                "ver",
-                "dar",
-                "saber",
-                "querer",
-                "llegar",
-                "pasar",
-                "deber",
-                "poner",
-                "parecer",
-                "quedar",
-                "creer",
-                "hablar",
-                "llevar",
-                "dejar",
-                "seguir",
-                "encontrar",
-                "llamar"
-            ],
-            answers: [
-                "to dance",
-                "to eat",
-                "to begin",
-                "to run",
-                "to have",
-                "to do",
-                "to be able",
-                "to say",
-                "to go",
-                "to see",
-                "to give",
-                "to know",
-                "to want",
-                "to arrive",
-                "to happen",
-                "to ought to",
-                "to put",
-                "to seem",
-                "to stay",
-                "to believe",
-                "to speak",
-                "to carry",
-                "to leave",
-                "to follow",
-                "to find",
-                "to call"
-            ],
+            guesses: ["bailar","comer","empezar","correr","tener","hacer","poder","decir","ir","ver","dar","saber","querer","llegar","pasar",
+                        "deber","poner","parecer","quedar","creer","hablar","llevar","dejar","seguir","encontrar","llamar"],
+            answers: ["to dance","to eat","to begin","to run","to have","to do","to be able","to say","to go","to see","to give",
+                        "to know","to want","to arrive","to happen","to ought to","to put","to seem", "to stay", "to believe","to speak",
+                        "to carry","to leave","to follow","to find","to call"],
             randomAnswers: [],
             selectedOption: null
         }
@@ -78,7 +27,7 @@ class FlashCards extends Component {
             counter: this.state.counter + 1
         })
         
-        if (this.state.counter >= this.state.guesses.length) {
+        if (this.state.counter >= this.state.length) {
             this.setState({
                 counter: 0
             })
@@ -86,7 +35,7 @@ class FlashCards extends Component {
     }
 
     handleOptionChange = (event) => {
-        // console.log('FlashCards: ' + event.target.value);
+        console.log('FlashCards: ' + event.target.value);
         // this goes to App and then Evaluate to show Correct/Incorrect
         this.setState({
           selectedOption: event.target.id
@@ -181,28 +130,33 @@ class FlashCards extends Component {
                             </div>
                         </div>
                         <div className="form-group">
-                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio1"  value={this.state.randomAnswers[0]}
-                            checked={this.state.selectedOption === 'radio1'} onClick={this.handleOptionChange}/>
+                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio1" 
+                            value={this.state.randomAnswers[0]} checked={this.state.selectedOption === 'radio1'} 
+                            onClick={this.handleOptionChange} />
                             <label>{this.state.randomAnswers[0]}</label>
                         </div>
                         <div className="form-group">
-                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio2" value={this.state.randomAnswers[1]}
-                            checked={this.state.selectedOption === 'radio2'} onClick={this.handleOptionChange}/>
+                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio2" 
+                            value={this.state.randomAnswers[1]} checked={this.state.selectedOption === 'radio2'} 
+                            onClick={this.handleOptionChange} />
                             <label>{this.state.randomAnswers[1]}</label>
                         </div>
                         <div className="form-group">
-                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio3" value={this.state.randomAnswers[2]}
-                            checked={this.state.selectedOption === 'radio3'} onClick={this.handleOptionChange}/>
+                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio3" 
+                            value={this.state.randomAnswers[2]} checked={this.state.selectedOption === 'radio3'} 
+                            onClick={this.handleOptionChange} />
                             <label>{this.state.randomAnswers[2]}</label>
                         </div>
                         <div className="form-group">
-                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio4"  value={this.state.randomAnswers[3]}
-                            checked={this.state.selectedOption === 'radio4'} onClick={this.handleOptionChange}/>
+                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio4" 
+                            value={this.state.randomAnswers[3]} checked={this.state.selectedOption === 'radio4'} 
+                            onClick={this.handleOptionChange} />
                             <label>{this.state.randomAnswers[3]}</label>
                         </div>
                         <div className="form-group">
-                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio5"  value={this.state.randomAnswers[4]}
-                            checked={this.state.selectedOption === 'radio5'} onClick={this.handleOptionChange}/>
+                            <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio5" 
+                            value={this.state.randomAnswers[4]} checked={this.state.selectedOption === 'radio5'} 
+                            onClick={this.handleOptionChange} />
                             <label>{this.state.randomAnswers[4]}</label>
                         </div>
                         

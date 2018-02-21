@@ -8,15 +8,20 @@ class ModalFC extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      title: 'Score'
+      title: 'Score',
+      score: 0,
+      highScores: null,
+      userName: ''
     };
 
   }
 
   componentWillReceiveProps (nextProps) {
-    if (nextProps.active === true) {
+    if (nextProps.isActive === true) {
       this.setState({
-          modal: true
+          modal: true,
+          score: this.props.userScore,
+          highScores: this.props.highScores
       });
     }
   }
@@ -27,8 +32,28 @@ class ModalFC extends React.Component {
     });
   }
 
+  handleClick = () => {
+    this.props.saveScore(this.state.userName);
+    this.toggle();
+  }
+
+  handleUserName = (event) => {
+    this.setState({
+      userName: event.target.value
+    });
+    console.log('user name: ' + this.state.userName);
+  }
+
   render() {
+    let highScores;
+
+    if (this.state.highScores) {
+      highScores = this.state.highScores.map((score) => {
+        return <li key={score._id}>{score.name} - {score.score}</li>
+      });
+    }
     
+
     return (
       <div>
         {/* <Button color="primary" onClick={this.toggle}>Launch demo modal</Button> */}
@@ -39,7 +64,7 @@ class ModalFC extends React.Component {
             <div>&nbsp;</div>
             <h6 className="text-center">All-Time High Scores</h6>
             <ol>
-              {/* {highScores} */}
+              {highScores}
             </ol>
             <h6 className="text-center">Save Your Score</h6>
             <div className="row">
@@ -55,7 +80,7 @@ class ModalFC extends React.Component {
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.toggle}>Close</Button>
-            <Button color="primary" onClick={this.toggle}>Save changes</Button>
+            <Button color="primary" onClick={this.handleClick}>Save changes</Button>
           </ModalFooter>
         </Modal>
       </div>

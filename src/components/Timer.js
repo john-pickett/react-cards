@@ -17,7 +17,7 @@ class Timer extends Component {
     cardsTimer () {
         this.props.timerBus('start');
         var begin = new Date().getTime();
-        var timesUp = begin + 3000;
+        var timesUp = begin + 30000;
     
         var x = setInterval( () => {
           var now = new Date().getTime();

@@ -37,7 +37,7 @@ class NavbarFC extends React.Component {
                 { !this.state.isWideEnough && <NavbarToggler onClick = { this.onClick } />}
                 <Collapse isOpen = { this.state.collapse } navbar>
                     <NavbarNav className="ml-auto">
-                    <NavItem active>
+                    <NavItem>
                         <NavLink className="nav-link" href="/create-lesson" to="/create-lesson">Create Lesson</NavLink>
                         {/* <Link to="/create-lesson" /> */}
                         

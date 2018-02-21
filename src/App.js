@@ -20,10 +20,10 @@ class App extends Component {
     
     this.state = {
       isCorrect: null,
-      timesUp: false,
+      // timesUp: false,
       score: 0,
       userName: '',
-      disabled: true,
+      disabled: false,
       timeUp: false,
       highScores: [],
       modal: false
@@ -65,6 +65,7 @@ class App extends Component {
         score: 0,
         timeUp: false
       })
+      console.log('disabled ' + this.state.disabled)
     } else if (value === 'end') {
       // console.log('value is end')
       this.setState({
@@ -81,7 +82,7 @@ class App extends Component {
   }
 
   getScores = () => {
-    axios.get('http://localhost:3000/scores')
+    axios.get('http://localhost:3001/scores')
     // axios.get('https://flash-cards-api.herokuapp.com/scores')
     .then((doc) => {
       console.log('got score data');
@@ -97,18 +98,19 @@ class App extends Component {
       this.setState({
         highScores: tempScores
       });
+      console.log('high scores: ' + JSON.stringify(this.state.highScores))
     }, (err) => {
       console.log(err);
     })
   }
 
-  saveScore = () => {
+  saveScore = (name) => {
     let myScore = {
-      "name": this.state.name,
+      "name": name,
       "score": this.state.score
     };
-    // console.log('saving ' + JSON.stringify(myScore));
-    axios.post('http://localhost:3000/scores', myScore)
+    console.log('saving ' + JSON.stringify(myScore));
+    axios.post('http://localhost:3001/scores', myScore)
     // axios.post('https://flash-cards-api.herokuapp.com/scores', myScore)
     .then((doc) => {
       console.log('score saved');
@@ -126,9 +128,7 @@ class App extends Component {
   }
   
   render() {
-    const highScores = this.state.highScores.map((score) => {
-      return <li>{score.name} - {score.score}</li>
-    });
+    
 
     return (
       <div className="App">
@@ -144,7 +144,8 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <ModalFC active={this.state.modal}/>
+        <ModalFC isActive={this.state.modal} userScore={this.state.score} highScores={this.state.highScores} 
+        saveScore={this.saveScore}/>
       </div>
     );
   }
