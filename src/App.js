@@ -23,7 +23,7 @@ class App extends Component {
       // timesUp: false,
       score: 0,
       userName: '',
-      disabled: false,
+      disabled: true,
       timeUp: false,
       highScores: [],
       modal: false

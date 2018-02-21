@@ -133,31 +133,31 @@ class FlashCards extends Component {
                             <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio1" 
                             value={this.state.randomAnswers[0]} checked={this.state.selectedOption === 'radio1'} 
                             onClick={this.handleOptionChange} />
-                            <label>{this.state.randomAnswers[0]}</label>
+                            <label htmlFor="radio1" >{this.state.randomAnswers[0]}</label>
                         </div>
                         <div className="form-group">
                             <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio2" 
                             value={this.state.randomAnswers[1]} checked={this.state.selectedOption === 'radio2'} 
                             onClick={this.handleOptionChange} />
-                            <label>{this.state.randomAnswers[1]}</label>
+                            <label htmlFor="radio2">{this.state.randomAnswers[1]}</label>
                         </div>
                         <div className="form-group">
                             <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio3" 
                             value={this.state.randomAnswers[2]} checked={this.state.selectedOption === 'radio3'} 
                             onClick={this.handleOptionChange} />
-                            <label>{this.state.randomAnswers[2]}</label>
+                            <label htmlFor="radio3">{this.state.randomAnswers[2]}</label>
                         </div>
                         <div className="form-group">
                             <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio4" 
                             value={this.state.randomAnswers[3]} checked={this.state.selectedOption === 'radio4'} 
                             onClick={this.handleOptionChange} />
-                            <label>{this.state.randomAnswers[3]}</label>
+                            <label htmlFor="radio4">{this.state.randomAnswers[3]}</label>
                         </div>
                         <div className="form-group">
                             <input disabled={this.isDisabled()} name="group2" type="radio" className="with-gap" id="radio5" 
                             value={this.state.randomAnswers[4]} checked={this.state.selectedOption === 'radio5'} 
                             onClick={this.handleOptionChange} />
-                            <label>{this.state.randomAnswers[4]}</label>
+                            <label htmlFor="radio5">{this.state.randomAnswers[4]}</label>
                         </div>
                         
                     </div>
